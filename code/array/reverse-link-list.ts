@@ -1,10 +1,12 @@
+
 // 反转链表
 interface LinkNode {
   value: number
   next: LinkNode | null
 }
 
-function getLinkListFromArr(arr: number[]): LinkNode {
+// 创建链表
+function createLinkList(arr: number[]): LinkNode {
   const len = arr.length
   if (len == 0) return null
 
@@ -27,24 +29,30 @@ function getLinkListFromArr(arr: number[]): LinkNode {
   return currNode
 }
 
-// 时间复杂度：O(n)/*  */
-export default (arr: number[]): LinkNode => {
-  // 通过数组转成链表
-  let head = getLinkListFromArr(arr)
+// 反转链表: 根据旧链表，构建新链表，即依次取出旧链表的头节点，构建新链表的头节点
+function reverseLinkList(oldHead: LinkNode): LinkNode {
+  // 初始化尾节点为 null
+  let newHead = null
 
-  // 反转链表
-  let res = null
-  let curr = head
-  while (curr) {
-    // 保存头结点后的后续链表
-    const next = curr.next
-    // 将当前节点的下一个指向 next
-    curr.next = res
-    // 将当前节点保存结果
-    res = curr
-    // 当前节点指向下一个节点
-    curr = next
+  while (oldHead) {
+    // 保存当前旧链表头节点的下一个节点
+    const nextOldNode = oldHead.next
+    // 将当前旧链表中的头节点指向新链表的头节点
+    oldHead.next = newHead
+    // 旧链表头节点作为新链表的头节点
+    newHead = oldHead
+    // 将旧链表的头节点更新为下一个节点
+    oldHead = nextOldNode
   }
 
-  return res
+  // 返回新链表
+  return newHead
+}
+
+// 时间复杂度：O(n)
+export default (arr: number[]): LinkNode => {
+  // 通过数组转成链表
+  let head = createLinkList(arr)
+  // 反转链表并返回
+  return reverseLinkList(head)
 }
