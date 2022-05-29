@@ -1,4 +1,4 @@
-import Queue from "../../code/array/link-list-one-queue";
+import Queue from "../../code/queue/link-list-one-queue";
 
 describe('link list one queue', () => {
 

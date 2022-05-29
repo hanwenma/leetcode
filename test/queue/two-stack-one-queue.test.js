@@ -1,4 +1,4 @@
-import Queue from "../../code/array/two-stack-on-queue";
+import Queue from "../../code/queue/two-stack-one-queue";
 
 describe('two stack one queue', () => {
   const queue = new Queue();

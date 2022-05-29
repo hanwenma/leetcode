@@ -1,4 +1,4 @@
-import reverseLinkList from "../../code/array/reverse-link-list";
+import reverseLinkList from "../../code/linkList/reverse-link-list";
 
 describe('reverse link list', () => {
   test("reverse link list: [100, 200, 300]", () => {
